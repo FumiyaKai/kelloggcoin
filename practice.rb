@@ -27,3 +27,22 @@ blockchain = [
 # Anthony's KelloggCoin balance is 2650
 
 # 👇👇👇 Your code HERE 👇👇👇
+balances = {}
+
+for transaction in blockchain
+  from_user = transaction["from_user"]
+  to_user = transaction["to_user"]
+  amount = transaction["amount"]
+
+  balances[from_user] ||= 0
+  balances[to_user] ||= 0
+  
+  balances[from_user] -= amount if from_user
+  balances[to_user] += amount
+end
+
+for user, balance in balances
+  if balance !=0
+    puts "#{user.to_s.capitalize}'s KelloggCoin balance is #{balance}"
+  end
+end
